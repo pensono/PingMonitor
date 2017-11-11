@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PingMonitor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="350" Width="525">    
+    <!-- I'm using DockPanels here simply because I like them, other layouts work fine -->
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button Content="Add Address" Click="AddAddress" DockPanel.Dock="Right" />
+            <TextBox Name="AddressInput" KeyDown="AddressInput_KeyDown" /> <!-- DockPanels will stretch out the last item in them -->
+        </DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="4">
+            <TextBlock Text="Connections: " />
+            <TextBlock Text="{Binding PingResults.Count}" />
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding PingResults}">
+        </DataGrid>
+    </DockPanel>
 </Window>

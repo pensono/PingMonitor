@@ -17,12 +17,32 @@ namespace PingMonitor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// 
+    /// This class represents the VeiwModel
     /// </summary>
     public partial class MainWindow : Window
     {
+        private NetworkStatus _pingResults = new NetworkStatus();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = _pingResults; // Tell WPF where to search for bindings
+        }
+
+        public void AddAddress(object sender, RoutedEventArgs e)
+        {
+            _pingResults.PingResults.Add(new PingResult(AddressInput.Text));
+        }
+
+        private void AddressInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                AddAddress(sender, null);
+                AddressInput.Text = "";
+            }
         }
     }
 }

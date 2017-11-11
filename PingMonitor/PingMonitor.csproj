@@ -68,6 +68,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PingResult.cs" />
+    <Compile Include="NetworkStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
