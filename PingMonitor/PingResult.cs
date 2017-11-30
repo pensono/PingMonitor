@@ -23,7 +23,7 @@ namespace PingMonitor
             // Put this on another thread so it doesn't block the UI
             pinger = new Timer(updatePing, null, 0, 1000);
         }
-
+        
         private void updatePing(object state)
         {
             Ping sender = new Ping();
@@ -76,7 +76,7 @@ namespace PingMonitor
             }
             private set { // Not externally settable
                 _responseTimeMs = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ResponseTimeMs"));
             }
         }
     }

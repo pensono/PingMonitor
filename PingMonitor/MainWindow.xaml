@@ -16,7 +16,12 @@
             <TextBlock Text="Connections: " />
             <TextBlock Text="{Binding PingResults.Count}" />
         </StackPanel>
-        <DataGrid ItemsSource="{Binding PingResults}">
+        <!-- DataGrid will generate columns based on the properties of it's rows by default -->
+        <DataGrid ItemsSource="{Binding PingResults}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Address}" Header="Address" />
+                <DataGridTextColumn Binding="{Binding ResponseTimeMs}" Header="Response Time (ms)" />
+            </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
 </Window>
